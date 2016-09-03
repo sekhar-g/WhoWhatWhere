@@ -1,0 +1,31 @@
+{
+  "name": "who_what_where",
+  "version": "1.0.0",
+  "description": "search for food business",
+  "main": "myServer.js",
+  "scripts": {
+    "start": "node myServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sekhar-g/WhoWhatWhere.git"
+  },
+  "keywords": [
+    "business"
+  ],
+  "author": "Sekhar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sekhar-g/WhoWhatWhere/issues"
+  },
+  "homepage": "https://github.com/sekhar-g/WhoWhatWhere#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dodge": "^0.6.2",
+    "express": "^4.14.0",
+    "lodash": "^4.15.0",
+    "opener": "^1.4.1",
+    "serve-static": "^1.11.1",
+    "yelp": "^1.0.1"
+  }
+}
