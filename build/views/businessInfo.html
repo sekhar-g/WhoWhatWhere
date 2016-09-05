@@ -1,13 +1,19 @@
 <div class="container">
     <div class="listContainer">
-        <div class="list" ng-repeat="item in personalData" class="item-detail">
-            <div class="pull-left ">
-                <img class="image" ng-src="{{item.image}}"/>
-            </div>
-            <div class="name">{{item.name}}</div>
-            <div class="address" ng-repeat="add in item.address">{{add}}</div>
-            <div class="name">{{item.rating}}</div>
-            <img class="ratingImage" ng-src="{{item.ratingImage}}"/>
-        </div>
-    </div>
+        <div class="clearfix list" ng-repeat="item in data " class="item-detail">
+            
+            <div class="pull-left">
+   				<img class="image" ng-src="{{item.image}}"/>
+    		</div>
+
+    		<div class="item-details">
+    			<div class="name">{{item.name}}</div>
+        		<div class="address">{{item.address}}</div>	            		
+        		<div class="rating">{{item.city}}</div>
+        		<div class="phone">{{item.phone}}</div>
+        		<div class="rating-button">{{item.rating}}</div>	
+    		</div> 		                      
+			
+    	</div>
+	</div>
 </div>

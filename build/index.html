@@ -1,64 +1,84 @@
 <!DOCTYPE html>
 <html ng-app="businessApp">
-  <head>
-    <title>Simple Map wel come to whowhatwhere</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <script src="js/lib/angular.min.js"></script>
-    <script src="js/controller.js"></script>
-    <script src="lib/angular/angular-bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"
-    ></script>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-  </head>
-  <body ng-controller="myCtrl">
-    
-    <div id="header" >
-        <div id="logo">
-            <div id="logoIcon">Wh</div>
-            <h1>o at ere</h1>
-        </div>
+    <head>
+        <title>Simple Map wel come to whowhatwhere</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
+        
+        <script src="js/controller.js"></script>
+        <script src="js/appRoute.js"></script>
+        <link href="js/lib/bootstrap.min.js" rel="stylesheet" type="text/css"/>
 
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body ng-controller="myCtrl">
+        <!-- header -->
+        <div id="header" class="row" >
             <!--Menus-->
-        <!-- <div id="nav">
-            <li><a id="restaurant" class="active" href="#/restaurant" ng-click="onMenuClick($event)">Restaurant</a></li>
-            <li><a id="business" href="#/business" ng-click="onMenuClick($event)">Business</a></li>
-            <li><a id="food" href="#/food" ng-click="onMenuClick($event)">Foods</a></li>
-            <li><a id="lifeStyle" href="#/lifeStyle" ng-click="onMenuClick($event)">LifeStyle</a></li>
-            <li><a id="fun" href="#/fun" ng-click="onMenuClick($event)">Fun</a></li>
-        </div> -->
+            <div id="nav">
+                <li><a id="restaurant" class="active" href="#/restaurant" ng-click="onMenuClick($event)">Food</a></li>
+                <li><a id="business" href="#/business" ng-click="onMenuClick($event)">Restaurant</a></li>
+                <li><a id="food" href="#/food" ng-click="onMenuClick($event)">Business</a></li>
+                <li><a id="lifeStyle" href="#/lifeStyle" ng-click="onMenuClick($event)">Fun</a></li>
+                <li><a id="fun" href="#/fun" ng-click="onMenuClick($event)">LifeStyle</a></li>
+            </div>
 
-            <!--Input and Button pannel-->
-        <div id="searchPannel">
-            <button id="searchButton" value="Search">Search</button>
-            <input id="searchInput" class="search" ng-model="search"/>
+            <div class="row">
+            <!-- <h1 class="pull-left app-heading">Who What Where</h1> -->
+            <div id="logo" class="col-xs-4 pull-left">
+                <div id="logoIcon">Wh</div>
+                <h1>o at ere</h1>
+            </div>
+            <div class="pull-right search-box">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                        <input type="text" placeholder="stuff?" ng-model="query"/>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                        <input type="text" placeholder="World?" ng-model="location"/>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <button class="search-btn btn btn-info" ng-click="onSearch()">Search</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-         
-       <!-- <div ng-view></div>  -->
-       	<div class="container">
-		    <div class="listContainer">
-		        <div class="list" ng-repeat="item in data " class="item-detail">
-		            <div class="pull-left ">
-		                <img class="image" ng-src="{{item.image}}"/>
-		            </div>
-		            <div class="name">{{item.name}}</div>
-		            <div class="name">{{item.city}}</div>
-		            <!-- <div class="address" ng-repeat="add in item.address">{{add}}</div> -->
-		            <div class="name">{{item.address}}</div>
-		            <div class="name">{{item.rating}}</div>
-					<!-- <img class="ratingImage" ng-src="{{item.image}}"/> -->
-		            <!-- <img class="ratingImage" ng-src="{{item.ratingImage}}"/> -->
-		    	</div>
-	    	</div>
-		</div> 
-    
-    <!-- <div id="google-map">
-        <div id="map" style="float: right;width: 66%;height: 687px;margin-top: -800px">
-        </div>
-    </div> -->
 
-  </body>
+
+        </div>
+
+        <div class="row">
+            
+            <div class="col-xs-4 list-container">
+                <div class="list" ng-repeat="item in data">
+                    
+                    <div class="pull-left">
+                        <img class="image" ng-src="{{item.image}}"/>
+                    </div>
+
+                    <div class="item-details">
+                        <div class="name">{{item.name}}</div>
+                        <div class="address">{{item.address}}</div>                     
+                        <div class="rating">{{item.city}}</div>
+                        <div class="phone">{{item.phone}}</div>
+                        <div class="rating-button">{{item.rating}}</div>    
+                    </div>                            
+                    
+                </div>
+            </div>
+
+            <!-- map -->
+            <div class="col-xs-8 map-container">
+                <div id="map" style="width: 100%; height: 800px;"></div>
+            </div>
+        </div>
+
+    </body>
 </html>
 
 
