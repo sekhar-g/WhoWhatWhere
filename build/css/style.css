@@ -1,171 +1,126 @@
-.bgColor {
-    margin: 0px;
-    padding: 0px;
-    background-image: url('../assets/images/background.jpg');
-    font-family: 'Raleway', sans-serif;
-    font-size: 11pt;
-    color: #000000;
+body{
+    height: 100%;
+    background-color: darkseagreen;
+    overflow-x: hidden;
 }
 
-#header{
-    
-    padding: 50px 0px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background-color: #f5821f;
+.set-header-background{
+    border: 5px solid #483d3b;
+    background-image: url("../images/background_header.jpg");
+    background-repeat: no-repeat;
+    background-size:cover ;
 }
 
-#logo{
-    position: relative;
-    width: 400px;
-    display: block;
-    text-decoration: none;
-    margin-left: 40px;
-    margin-top: -10px;
-    font-weight: 600;
-    color: #ffffff;
-}
-#logo h1{
-    font-size: 60px;
-    margin-left: 178px;
-    margin-top: -112px;
-    width: 50px;
-}
-#logoIcon{
-    width: 170px;
-    height: 65px;
-    font-size: 110px;
-    padding-top: 50px;
-    color: orange;
-    background-color: white;
-    padding-left: 5px;
-    border-radius: 15px;
-}
-
-#nav
-{
-    position: absolute;
-    right: 2px;
-    top: 10px;
-}
-
-#nav > li
-{
-    list-style: none;
-    float: left;
-}
-
-#nav >  li:last-child
-{
-    padding-right: 0;
-}
-
-#nav >  li > a,
-#nav >  li > span
-{
-    display: block;
-    margin-left: 0.7em;
-    padding: 0.40em;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    font-size: 20px;
+.header {
+    font-style: italic;
     font-weight: bold;
-    outline: 0;
-    color: #FFF;
-}
-a:hover {
-    border-radius: 5px;
-    background-color: #56c9d6;
+    font-size: 60px;
+    color:  darkviolet;
+    margin-right: 40px;
+    margin-top: 65px;
 }
 
-.search-box{
-    padding-right: 30px;
-}
-    
-
-.search-btn{
-    margin-left: 155px;
+.search-box {
+    margin: 10px;
+    padding: 10px 40px 10px;
+    color: #eee8d5;
 }
 
-.list{
-    width: 355px;
-    height: 130px;
+.search-btn {
+    margin-top: 4px;
+}
+
+input[type="text"] {
     border-radius: 10px;
-    border: 1px solid #D2D6D5;
-    margin: 5px;
-    margin-left: 10px;
-    box-shadow: 0 5px 15px black;
+    width: 100%;
+    color: #475b62;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0 10px 15px;
+    outline: 0;
 }
 
-.list-container{
-    width: 35%;
-    height: 768px;
+.set-input{
+    margin-top: 20px;
+}
+
+.image-food{
+    margin-top: 20px;
+    width: 225px;
+    height: 200px;
+}
+
+.image-food1{
+    margin-top: 0px;
+    width: 225px;
+    height: 200px;
+}
+
+.image-text{
+    border-radius: 10px;
+    width: 100%;
+    color: #ffffff;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.panel-container {
+    width: 40%;
+    height: 790px;
     overflow-y: auto;
-    border-radius: 25px;
-    margin-left: 10px;
+    cursor: pointer;
 }
 
-.map-container{
-    width:65%;
-    height: 50%;
-    margin-top: 5px;
-    overflow-y: auto;
-}
-
-.item-details{
-    margin-left: 115px;
-    margin-top: 27px;
-}
-
-.image{
+.list-container {
     margin-left: 5px;
-    margin-top: 15px;
+    margin-top: 3px;
+    width: 525px;
+    height: 140px;
+    border-radius: 5px;
+    background-image: url("../images/background_list.jpg");
+    background-repeat: no-repeat;
+    background-size:cover ;
+    border: 1px solid blue;
+}
+
+.item-image{
+    margin-left: 10px;
+    margin-top: 20px;
     border-radius: 15px;
     width: 100px;
     height: 100px;
 }
-.name{
+
+.item-list{
+    margin-left: 125px;
+    margin-top: 28px;
+}
+
+.item-name {
     font-size: 16px;
-    color: #f5821f;
+    color: #0000ff;
     font-weight: bold;
 }
-.address{
-    margin-top: 1px;
+
+.item-address, .item-city, .item-phone{
+    margin-left: 18px;
 }
-.rating-button{
+
+.item-rating{
     width: 30px;
     height: 30px;
-    background-color: #f5821f;
+    background-color: #476fff;
     font-size: 14px;
-    
     color: #ffffff;
     font-weight: bold;
     text-align: center;
     float: right;
-    margin-top: -30px;
+    margin-top: -28px;
     margin-right: 10px;
     border-radius: 1px;
     line-height: 30px;
     border-radius: 7px;
 }
 
-.ratingImage{
-    margin-bottom: 35px;
-}
-
-
-
-a{
-    color: white;
-    font-size: 16px;
-}
-.panel-container{
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 330px;
-    
-    border-radius: 5px;
-    background-color: grey;
-    border: 1px solid red;
-    margin-bottom: 10px;
+.map-container {
+    width: 60%;
 }
