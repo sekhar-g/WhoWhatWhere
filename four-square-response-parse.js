@@ -8,6 +8,7 @@ module.exports = function (data, term) {
         fun = ['fun', 'entertainment','enjoyble','mockery','excitement'];
 
     for (var item of data){
+        var entry = {};
         if (item.name) {
             entry.name = item.name;
         } else {
