@@ -1,6 +1,9 @@
 var app = angular.module("businessApp", []);
+<<<<<<< HEAD
 
 var searchItem = '';
+=======
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
 app.controller('myCtrl', function ($scope, $http, $window) {
     $scope.data = [];
     var markers = [];
@@ -27,9 +30,17 @@ app.controller('myCtrl', function ($scope, $http, $window) {
                         cords: respData[i].cords,
                         image: respData[i].photo
                     });
+<<<<<<< HEAD
                 }
 
                 //Load Google Map
+=======
+
+
+                    //  console.log("image", respData[i].photo);
+                }
+
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
                 loadGoogleMarkers();
             } else {
                 console.log('No Results found');
@@ -41,15 +52,22 @@ app.controller('myCtrl', function ($scope, $http, $window) {
     }
 
     //on search button functionality
+<<<<<<< HEAD
     $scope.onSearchButton = function () {
         searchItem = event.target.id;
         console.log("searchItem",searchItem);
         if ($scope.location.toString().trim().length > 0) {
             $scope.showListAndMap = true;
+=======
+    $scope.onMenuButton = function () {
+        if ($scope.location.toString().trim().length > 0) {
+            $scope.showItemDetails = true;
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
             getInfo({query: $scope.query, location: $scope.location});
         } else {
             alert('please enter a location');
         }
+<<<<<<< HEAD
         console.log('sarch');
 
         $(".header").addClass('header-animation');
@@ -94,6 +112,46 @@ app.controller('myCtrl', function ($scope, $http, $window) {
         },
         {enableHighAccuracy: true, timeout: 5000, maximumAge: 600000});
 
+=======
+    };
+
+    function onCityPositionUpdate(position) {
+        getCurrentCityPosition(position.coords.latitude, position.coords.longitude);
+    }
+
+    function getCurrentCityPosition(latitude, longitude) {
+        var latlng = new google.maps.LatLng(latitude, longitude);
+
+        new google.maps.Geocoder().geocode(
+            {'latLng': latlng},
+            function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        var value = results[0].formatted_address.split(",");
+                        var count = value.length;
+                        var city = value[count - 3];
+                        $scope.$apply(function () {
+                            $scope.location = city;
+                        });
+                    }
+                    else {
+                        console.log("address not found");
+                    }
+                }
+                else {
+                    console.log("Geocoder failed due to: " + status);
+                }
+            }
+        );
+    }
+
+    navigator.geolocation.getCurrentPosition(onCityPositionUpdate,
+        function () {
+            $scope.location = 'Pune';
+        },
+        {enableHighAccuracy: true, timeout: 5000, maximumAge: 600000});
+
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
     function setMapOnAllMarkers() {
         for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
@@ -128,6 +186,7 @@ app.controller('myCtrl', function ($scope, $http, $window) {
         });
 
         var infowindow = new google.maps.InfoWindow({
+<<<<<<< HEAD
             content: '<div><strong>'+_marker.title+'</strong></div><div>'+_marker.address+'</div><div>'+_marker.phone+'</div>'
         });
 
@@ -143,14 +202,35 @@ app.controller('myCtrl', function ($scope, $http, $window) {
             infowindow.close();
         });
 
+=======
+            content: '<div>'+_marker.title+'</div><div>'+_marker.address+'</div>'
+        });
+
+        locator.addListener('mouseover', function () {
+            infowindow.open(map, locator);
+
+        });
+
+        locator.addListener('mouseout', function () {
+            infowindow.close();
+        });
+
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
         //click on marker
         locator.addListener('click', function () {
             onScrollTop(_marker.number);
         });
+<<<<<<< HEAD
 
         return locator;
     }
 
+=======
+
+        return locator;
+    }
+
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
     //map
     function loadGoogleMarkers() {
         var locations = $scope.data;
@@ -164,8 +244,12 @@ app.controller('myCtrl', function ($scope, $http, $window) {
                 number: i,
                 position: new google.maps.LatLng(cords.lat, cords.lon),
                 title: locations[i].name,
+<<<<<<< HEAD
                         address: locations[i].address,
                         phone: locations[i].phone,
+=======
+				address: locations[i].address,
+>>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
                 map: map,
                 animation: google.maps.Animation.DROP
             });
