@@ -5,33 +5,23 @@
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <script src="js/lib/angular.min.js"></script>
-<<<<<<< HEAD
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!--<script src="js/lib/jquery.min.js"></script>-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
         <script src="js/controller.js"></script>
 
-=======
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
-        <script src="js/controller.js"></script>
-        <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-
-        <!--<script src="js/lib/angular-route.min.js"></script>-->
-
->>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/style.css">
 
     </head>
     <body ng-controller="myCtrl">
-<<<<<<< HEAD
         <div style="height: 100%;">
             <div class="row">
                 <h1 class="header">Who What Where</h1>
             </div>
 
             <div class="row">
-                <h1 class="image-text">Hey...Stop! Choose the best spot to eat, drink, shop, fun...in any city in the
+                <h1 class="image-text">Find the best spot to eat, drink, shop, fun or visit any city in the
                     world.</h1>
             </div>
 
@@ -47,28 +37,11 @@
                     <div class="col-sm-2 set-input">
                         <button class="search-btn btn btn-info" ng-click="onSearchButton()">Search</button>
                     </div>
-=======
-
-       <div class="row set-header-background">
-            <div class="pull-left search-box">
-                <div class="">
-                    <input type="text" placeholder="Place" ng-model="query" autofocus/>
-                </div>
-                <div class="set-input">
-                    <input type="text" placeholder="Where" ng-model="location"/>
->>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
-                </div>
-                <div class="set-input">
-                    <button class="search-btn btn btn-info" ng-click="onMenuButton()">Search</button>
                 </div>
             </div>
-            <div class="">
-                <h1 class="pull-right header">Who What Where</h1>
-            </div>
 
-<<<<<<< HEAD
             <!--List of items for searching-->
-            <div class="row images-display">
+           <!-- <div class="row images-display">
                 <div class="menus">
                     <button class="food-button" ng-click="onSearchButton()"></button>
                     <h1 class="button-text">Food</h1>
@@ -86,10 +59,18 @@
                     <h1 class="button-text">Fun</h1>
                 </div>
 
+            </div>-->
+            <div ng-if="!showListAndMap" class="row">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-6">
+                    <div align="center"><img class="image-food" ng-repeat="img in [1,2]" ng-src="./images/{{img}}.jpg"/></div>
+                    <div align="center"><img class="image-food1" ng-repeat="img in [3,4]" ng-src="./images/{{img}}.jpg"/></div>
+                </div>
+                <div class="col-xs-3"></div>
             </div>
 
             <!-- display list and map-->
-            <div class="row panel-list-container">
+            <div class="row panel-list-container" ng-show="mapShow">
                 <div class="col-xs-4 panel-container">
                     <div class="list grid element-{{item.class}}" ng-repeat="item in data track by $index"
                          id="{{ item.id }}" ng-click="onClick(item.url)">
@@ -103,46 +84,13 @@
                                 <div class="item-phone">{{item.phone}}</div>
                                 <div class="item-rating">{{item.rating}}</div>
                             </div>
-=======
-        <div ng-if="!showItemDetails" class="set-default-container">
-            <h1 class="image-text">Hey...Stop!  Choose the best spot to eat, drink, shop, fun...in any city in the world.</h1>
-
-            <div class="row">
-                <div class="col-xs-3"></div>
-                <div class="col-xs-6">
-                    <div align="center"><img class="image-food" ng-repeat="img in [1,2]" ng-src="./images/{{img}}.jpg"/></div>
-                    <div align="center"><img class="image-food1" ng-repeat="img in [3,4]" ng-src="./images/{{img}}.jpg"/></div>
-                </div>
-                <div class="col-xs-3"></div>
-            </div>
-        </div>
-
-         <div class="row">
-            <div class="col-xs-4 panel-container">
-                <div class="list grid element-{{item.class}}" ng-repeat="item in data track by $index"
-                     id="{{ item.id }}" ng-click="onClick(item.url)">
-
-                    <div class="list-container">
-                        <div class="pull-left"><img class="item-image" ng-src="{{item.image}}"/></div>
-                        <div class="item-list">
-                            <div class="item-name">{{(item.class + 1) + '. ' +item.name}}</div>
-                            <div class="item-address">{{item.address}}</div>
-                            <div class="item-city">{{item.city}}</div>
-                            <div class="item-phone">{{item.phone}}</div>
-                            <div class="item-rating">{{item.rating}}</div>
->>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
                         </div>
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <div class="col-xs-8 map-container">
                     <div id="map" style="width: 100%; height: 100%;"></div>
                 </div>
-=======
-            <div class="col-xs-8 map-container">
-                <div id="map" style="width: 100%; height: 800px;"></div>
->>>>>>> e1dc45c463483d8c6f6e61ce30853554badb8bfd
             </div>
         </div>
     </body>
