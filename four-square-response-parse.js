@@ -4,7 +4,7 @@ module.exports = function (data, term) {
     var coffee = ['coffee'],
         food = ['food', 'eatery', 'restorant', 'dinner', 'eat'],
         alcohol = ['beer', 'drink', 'drinking'],
-        shop = ['shopping', 'mall', 'shop', 'fashion']
+        shop = ['shopping', 'mall', 'shop', 'fashion'],
         fun = ['fun', 'entertainment','enjoyble','mockery','excitement'];
 
     for (var item of data){
@@ -16,7 +16,6 @@ module.exports = function (data, term) {
             continue;
         }
 
-        var entry = {};
         if (item.location.address) {
             entry.address = item.location.address;
         } else {
