@@ -1,23 +1,23 @@
 module.exports = function (data) {
 	var parsed = [];
-	for (var ite of data.businesses) {
+	for (var item of data.businesses) {
 		var entry = {};
-		if (ite.name) {
-			entry.name = ite.name;
+		if (item.name) {
+			entry.name = item.name;
 		} else {
 			//we dont need a business without a name
 			continue;
 		}
 
-		if (ite.location.address instanceof Array && ite.location.address.length > 0) {
-			entry.address = ite.location.address.join();
+		if (item.location.address instanceof Array && item.location.address.length > 0) {
+			entry.address = item.location.address.join();
 		} else {
 			entry.address = 'NA';
 		}
 
-		if (ite.categories instanceof Array && ite.categories.length > 0) {
+		if (item.categories instanceof Array && item.categories.length > 0) {
 			entry.categories = [];
-			ite.categories.forEach(function (e) {
+			item.categories.forEach(function (e) {
 				if (e instanceof Array) {
 					entry.categories.push(e[0]);
 				}
@@ -26,47 +26,47 @@ module.exports = function (data) {
 			entry.categories = 'NA';
 		}
 
-		if (ite.location.coordinate instanceof Object &&
-			ite.location.coordinate.latitude !== undefined &&
-			ite.location.coordinate.longitude !== undefined) {
-			entry.cords = {lat: ite.location.coordinate.latitude, lon: ite.location.coordinate.longitude};
+		if (item.location.coordinate instanceof Object &&
+			item.location.coordinate.latitude !== undefined &&
+			item.location.coordinate.longitude !== undefined) {
+			entry.cords = {lat: item.location.coordinate.latitude, lon: item.location.coordinate.longitude};
 		} else {
 			//we dont need a business without coordinates
 			continue;
 		}
 
-		if (ite.location.city) {
-			entry.city = ite.location.city;
+		if (item.location.city) {
+			entry.city = item.location.city;
 		} else {
 			entry.city = 'NA';
 		}
 
-		if (ite.rating) {
-			entry.rating = ite.rating;
+		if (item.rating) {
+			entry.rating = item.rating;
 		} else {
 			entry.rating = 'NA';
 		}
 
-		if (ite.display_phone) {
-			entry.phone = ite.display_phone;
+		if (item.display_phone) {
+			entry.phone = item.display_phone;
 		} else {
 			entry.phone = 'NA';
 		}
 
-		if (ite.snippet_image_url) {
-			entry.photo = ite.image_url;
+		if (item.snippet_image_url) {
+			entry.photo = item.image_url;
 		} else {
 			entry.photo = 'http://www.megaicons.net/static/img/icons_sizes/8/60/256/science-business-icon.png';
 		}
 
-		if (ite.url) {
-			entry.url = ite.url;
+		if (item.url) {
+			entry.url = item.url;
 		} else {
 			entry.url = 'NA';
 		}
 
-		if (ite.snippet_text) {
-			entry.description = ite.snippet_text;
+		if (item.snippet_text) {
+			entry.description = item.snippet_text;
 		} else {
 			entry.description = 'NA';
 		}

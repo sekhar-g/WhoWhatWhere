@@ -5,11 +5,13 @@
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
         <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!--<script src="js/lib/jquery.min.js"></script>-->
+
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
         <script src="js/controller.js"></script>
 
+        <link rel="stylesheet" href="css/bootstrap-combined.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/style.css">
 
@@ -40,26 +42,7 @@
                 </div>
             </div>
 
-            <!--List of items for searching-->
-           <!-- <div class="row images-display">
-                <div class="menus">
-                    <button class="food-button" ng-click="onSearchButton()"></button>
-                    <h1 class="button-text">Food</h1>
-                </div>
-                <div class="menus">
-                    <button class="drink-button" ng-click="onSearchButton()"></button>
-                    <h1 class="button-text">Drink</h1>
-                </div>
-                <div class="menus">
-                    <button class="shop-button" ng-click="onSearchButton()"></button>
-                    <h1 class="button-text">Shop</h1>
-                </div>
-                <div class="menus">
-                    <button class="fun-button" ng-click="onSearchButton()"></button>
-                    <h1 class="button-text">Fun</h1>
-                </div>
 
-            </div>-->
             <div ng-if="!showListAndMap" class="row">
                 <div class="col-xs-3"></div>
                 <div class="col-xs-6">

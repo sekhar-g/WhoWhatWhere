@@ -55,7 +55,7 @@ app.controller('myCtrl', function ($scope, $http, $window) {
         console.log('sarch');
 
         $(".header").addClass('header-animation');
-        $(".search-container").css({position:'relative', left:'300px'});
+        $(".search-container").css({position:'relative', left:'280px'});
 
         $('.image-text, .images-display').remove();
     };

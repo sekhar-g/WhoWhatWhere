@@ -14,14 +14,14 @@ html , body , .container {
     font-weight: bold;
     font-size: 60px;
     color: darkviolet;
-    margin-top: 265px;
+    margin-top: 65px;
     text-align: center;
 }
 
 .header-animation{
     position: absolute;
-    left: 100px;
-    top: -245px;
+    left: 50px;
+    top: -45px;
     font-size: 40px;
 }
 
@@ -37,9 +37,8 @@ html , body , .container {
 .search-container{
     position: relative;
     margin: 15px auto;
-
     margin-top: 3px;
-    width: 800px;
+    width: 500px;
 }
 
 .set-input {
@@ -52,7 +51,7 @@ input[type="text"] {
     width: 100%;
     color: #475b62;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 10px 0 10px 15px;
+    padding: 16px 0 16px 15px;
     outline: 0;
 }
 
@@ -190,12 +189,12 @@ input[type="text"] {
 
 .image-food{
     margin-top: 20px;
-    width: 225px;
-    height: 200px;
+    width: 150px;
+    height: 100px;
 }
 
 .image-food1{
     margin-top: 0px;
-    width: 225px;
-    height: 200px;
+    width: 150px;
+    height: 100px;
 }
