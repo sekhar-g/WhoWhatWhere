@@ -24,7 +24,7 @@ app.controller('mainController', function ($scope, $http, $location, $window) {
     function getData(input) {
         $scope.dispalyDetails = [];
         $http.post('/getdata', input).then(function (resp) {
-            console.log('input',input);
+
             if (resp.data instanceof Array && resp.data.length > 0) {
                 setMapOnAllMarkers();
                 var responseData = resp.data;
@@ -106,21 +106,11 @@ app.controller('mainController', function ($scope, $http, $location, $window) {
         }
     }
 
-    var previousElement,
-        previousNumber;
-
     function onScrollElementToTop(number) {
-        if (previousNumber != number) {
-            if (!angular.isUndefined(previousElement)) {
-                previousElement.css({'background-color': '#FFFFFF'});
-            }
-            $('.list-container .element-' + number + ' .panel-container').css({'background-color': '#B1D8B7'});
+
             $('.list-container').animate({
                 scrollTop: $('.list-container .element-' + number).get(0).offsetTop
             }, 1000);
-            previousNumber = number;
-            previousElement = $('.list-container .element-' + number + ' .panel-container');
-        }
     }
 
     function addMarker(_marker) {

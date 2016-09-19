@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="businessApp">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>yelp | foursquare </title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>3W</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
-</head>
-<body ng-controller="mainController" style="background-color: #f7ecb5">
-<div class="container-fluid">
-    <div class="row container-fluid"
-         style="background-image: url('../images/background_header.jpg');background-repeat: no-repeat;
-    background-size: cover;">
-        <div class="pull-left">
-            <img src="images/title.png" style="margin-top: 10px">
-        </div>
-        <div class="pull-right">
-            <div class="row">
-                <form>
-                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
-                        <input class="form-control" type="text" placeholder="Find...." ng-model="findName" required/>
+    </head>
+    <body ng-controller="mainController" style="background-color: #f7ecb5">
+        <div class="container-fluid">
+            <div class="row container-fluid"
+                 style="background-image: url('../images/background_header.jpg');background-repeat: no-repeat;
+            background-size: cover;">
+                <div class="pull-left">
+                    <img src="images/title.png" style="margin-top: 10px">
+                </div>
+                <div class="pull-right">
+                    <div class="row">
+                        <form>
+                            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                                <input class="form-control" type="text" placeholder="Find...." ng-model="findName" required/>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                                <input class="form-control" type="text" placeholder="Location...." ng-model="location"
+                                       required/>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                <button type="submit" class="btn btn-info" ng-click="onSearch()" style="">Search</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
-                        <input class="form-control" type="text" placeholder="Location...." ng-model="location"
-                               required/>
+                </div>
+
+                <div class="container row pull-right">
+                    <div class="col-xs-12 info-title">
+                        <span>Find the best places to eat, drink, shop,any thing or visit in any city in the world.</span>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                        <button type="submit" class="btn btn-info" ng-click="onSearch()" style="">Search</button>
-                    </div>
-                </form>
+                </div>
             </div>
+            <ng-view></ng-view>
         </div>
 
-        <div class="container row pull-right">
-            <div class="col-xs-12 info-title" >
-                <span>Find the best places to eat, drink, shop,any thing or visit in any city in the world.</span>
-            </div>
-        </div>
-    </div>
-    <ng-view></ng-view>
-</div>
-
-<script src="js/lib/angular.min.js"></script>
-<script src="js/controller.js"></script>
-<script src="js/lib/angular-route.min.js"></script>
-<script src="js/lib/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
-</body>
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/controller.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="js/lib/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
+    </body>
 </html>
