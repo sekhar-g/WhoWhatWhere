@@ -1,200 +1,79 @@
-body {
-    background-image: url("../images/background_header.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow-x: hidden;
-}
-
-html , body , .container {
-    height: 100%;
-}
-
-.header {
-    font-style: italic;
-    font-weight: bold;
-    font-size: 60px;
-    color: darkviolet;
-    margin-top: 65px;
-    text-align: center;
-}
-
-.header-animation{
-    position: absolute;
-    left: 50px;
-    top: -45px;
-    font-size: 40px;
-}
-
-.image-text {
-    border-radius: 10px;
-    width: 100%;
-    color: #ffffff;
-    margin-top: 10px;
-    font-size: 24px;
-    text-align: center;
-}
-
-.search-container{
-    position: relative;
-    margin: 15px auto;
-    margin-top: 3px;
-    width: 500px;
-}
-
-.set-input {
+input, button {
     margin-top: 20px;
-    alignment: center;
+    height: 40px !important;
+    margin-bottom: 20px;
 }
 
-input[type="text"] {
-    border-radius: 10px;
-    width: 100%;
-    color: #475b62;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 16px 0 16px 15px;
-    outline: 0;
-}
-
-.search-btn {
-    margin-top: 4px;
-}
-
-.images-display{
-    position: relative;
-    margin: 40px auto;
-    padding-left: 50px;
-    width: 500px;
-}
-
-.menus {
-    width: 100px;
-    text-align: center;
-    display: inline-block;
-}
-
-.food-button {
-    background-image: url("../images/1.jpg");
-    background-size: cover;
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
-}
-
-.drink-button {
-    background-image: url("../images/2.jpg");
-    background-size: cover;
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
-}
-.shop-button {
-    background-image: url("../images/3.jpg");
-    background-size: cover;
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
-}
-.fun-button {
-    background-image: url("../images/4.jpg");
-    background-size: cover;
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
-}
-
-.button-text {
+.info-title span {
+    display: block;
+    color: #ffffff;
+    font-weight: bold;
     font-size: 18px;
-    margin-left: 8px;
-    margin-top: 0px;
-    text-align: center;
-
 }
 
-.panel-list-container{
-    margin-top: 35px;
-    height: 92%;
+.map-container {
+    margin-top: 10px;
+    width: auto;
 }
 
-.panel-container {
-    width: 35%;
-    height: 900px;
-    overflow-y: auto;
-    cursor: pointer;
-    padding: 0px 0px 0px 10px;
-    margin: 0px;
-    overflow-x: hidden;
+.image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    border-radius: 15px;
 }
 
 .list-container {
-    margin-left: 5px;
+    height: 865px;
+    overflow-y: auto;
+    cursor: pointer;
+}
 
-    height: 140px;
-    border-radius: 5px;
-    background-image: url("../images/background_list.jpg");
+.panel-container {
+    padding-top: 10px;
+    padding-left: 10px;
+    height: auto;
+    background-image: url('../images/background_list.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    border: 1px solid blue;
-}
-
-.item-image {
-    margin-left: 10px;
-    margin-top: 20px;
-    border-radius: 15px;
-    width: 100px;
-    height: 100px;
-}
-
-.item-list {
-    margin-left: 125px;
-    margin-top: 28px;
+    border: 1px solid;
 }
 
 .item-name {
-    font-size: 16px;
-    color: #0000ff;
     font-weight: bold;
+    font-size: 16px;
+    color: #476fff;
 }
 
-.item-address, .item-city, .item-phone {
-    margin-left: 18px;
+.item-address, .item-phone, .item-city, .item-rating-button {
+    margin-left: 15px;
+    font-size: 13px;
 }
 
-.item-rating {
+.item-rating-button {
     width: 30px;
     height: 30px;
     background-color: #476fff;
     font-size: 14px;
     color: #ffffff;
     font-weight: bold;
-    text-align: center;
     float: right;
-    margin-top: -28px;
-    margin-right: 10px;
+    text-align: center;
     line-height: 30px;
     border-radius: 7px;
+    margin-bottom: 15px;
+    margin-top: -30px;
 }
 
-.map-container {
-    width: 65%;
-    padding: 0;
-    height: 100%;
+.image-food-top{
+    margin-top: 30px;
+    width: 200px;
+    height: 150px;
 }
 
-
-.search-box {
-    margin: 10px;
-    padding: 10px 40px 10px;
-    color: #eee8d5;
-}
-
-.image-food{
-    margin-top: 20px;
-    width: 150px;
-    height: 100px;
-}
-
-.image-food1{
+.image-food-bottom{
     margin-top: 0px;
-    width: 150px;
-    height: 100px;
+    width: 200px;
+    height: 150px;
 }

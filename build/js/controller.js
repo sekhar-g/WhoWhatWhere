@@ -1,63 +1,67 @@
-var app = angular.module("businessApp", []);
+/**
+ * Created by ISMAIL on 9/5/2016.
+ */
+var app = angular.module('businessApp', ['ngRoute']);
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'views/default-view.html'
+        }).when('/find', {
+            templateUrl: 'views/view-data.html'
+        })
+}]);
 
-var searchItem = '';
-app.controller('myCtrl', function ($scope, $http, $window) {
-    $scope.data = [];
-    var markers = [];
-    $scope.mapShow = false;
+app.controller('mainController', function ($scope, $http, $location, $window) {
+    var markers = [],
+        map;
 
-    function getInfo(input) {
+    //On refresh the page load default location.
+    if (angular.isUndefined($scope.findName) || angular.isUndefined($scope.location)) {
+        $location.path('/');
+    }
+
+    $scope.dispalyDetails = [];
+    function getData(input) {
+        $scope.dispalyDetails = [];
         $http.post('/getdata', input).then(function (resp) {
+            console.log('input',input);
             if (resp.data instanceof Array && resp.data.length > 0) {
-                console.log(resp.data);
-                var respData = resp.data;
                 setMapOnAllMarkers();
-                markers.length = 0;
-                $scope.data = [];
-
-                for (var i = 0; i < respData.length; i++) {
-
-                    $scope.data.push({
-                        class: i,
-                        address: respData[i].address,
-                        city: respData[i].city,
-                        name: respData[i].name,
-                        phone: respData[i].phone,
-                        rating: respData[i].rating,
-                        url: respData[i].url,
-                        cords: respData[i].cords,
-                        image: respData[i].photo
-                    });
+                var responseData = resp.data;
+                for (var i = 0; i < responseData.length; i++) {
+                    $scope.dispalyDetails.push(
+                        {
+                            id: i,
+                            name: responseData[i].name,
+                            phone: responseData[i].phone,
+                            rating: responseData[i].rating,
+                            city: responseData[i].city,
+                            image: responseData[i].photo,
+                            address: responseData[i].address,
+                            cords: responseData[i].cords,
+                            url: responseData[i].url
+                        }
+                    )
                 }
 
-                //Load Google Map
-                loadGoogleMarkers();
+                //Load the google map function
+                loadInitMapMarkers();
             } else {
-                console.log('No Results found');
+                alert('No Results found please provide valid Inputs');
+                $location.path('/');
             }
-
         }, function (error) {
             console.error(error);
+            $location.path('/');
         });
     }
 
-    //on search button functionality
-    $scope.onSearchButton = function () {
-        searchItem = event.target.id;
-        console.log("searchItem",searchItem);
-        if ($scope.location.toString().trim().length > 0) {
-            $scope.mapShow = true;
-            $scope.showListAndMap = true;
-            getInfo({query: $scope.query, location: $scope.location});
-        } else {
-            alert('please enter a location');
+    //getData({query: 'food', location: 'new york'});
+    $scope.onSearch = function () {
+        if (!angular.isUndefined($scope.findName) || !angular.isUndefined($scope.location)) {
+            getData({query: $scope.findName, location: $scope.location});
+            $location.path('/find');
         }
-        console.log('sarch');
-
-        $(".header").addClass('header-animation');
-        $(".search-container").css({position:'relative', left:'280px'});
-
-        $('.image-text, .images-display').remove();
     };
 
     function onCityPositionUpdate(position) {
@@ -102,60 +106,60 @@ app.controller('myCtrl', function ($scope, $http, $window) {
         }
     }
 
-    function loadMap(cords) {
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: new google.maps.LatLng(cords.lat, cords.lon)
-        });
-    }
+    var previousElement,
+        previousNumber;
 
-    $scope.onClick = function (url) {
-        if (url === 'NA') {
-            //no url
-        } else {
-            $window.open(url, '_blank');
+    function onScrollElementToTop(number) {
+        if (previousNumber != number) {
+            if (!angular.isUndefined(previousElement)) {
+                previousElement.css({'background-color': '#FFFFFF'});
+            }
+            $('.list-container .element-' + number + ' .panel-container').css({'background-color': '#B1D8B7'});
+            $('.list-container').animate({
+                scrollTop: $('.list-container .element-' + number).get(0).offsetTop
+            }, 1000);
+            previousNumber = number;
+            previousElement = $('.list-container .element-' + number + ' .panel-container');
         }
-    };
-
-    function onScrollTop(number) {
-        $('.panel-container').animate({
-            scrollTop: $('.panel-container .element-' + number).offset().top - 250
-        }, 1000);
     }
 
     function addMarker(_marker) {
-        var locator = new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: _marker.position,
             map: map
         });
 
         var infowindow = new google.maps.InfoWindow({
-            content: '<div><strong>'+_marker.title+'</strong></div><div>'+_marker.address+'</div><div>'+_marker.phone+'</div>'
+            content:'<div><strong>'+ _marker.title+'</strong></div><div>'+ _marker.address +'</div><div>'+ _marker.phone +'</div>'
         });
 
-        //mouse over
-        locator.addListener('mouseover', function () {
-            console.log(" locator)", locator);
-            infowindow.open(map, locator);
-
+        marker.addListener('mouseover', function () {
+            infowindow.open(map, marker);
         });
 
-        //mouse out
-        locator.addListener('mouseout', function () {
+        marker.addListener('mouseout', function () {
             infowindow.close();
         });
 
         //click on marker
-        locator.addListener('click', function () {
-            onScrollTop(_marker.number);
+        marker.addListener('click', function () {
+            onScrollElementToTop(_marker.number);
         });
 
-        return locator;
+        return marker;
     }
 
-    //map
-    function loadGoogleMarkers() {
-        var locations = $scope.data;
+    //Adding google Map to dom element
+    function loadMap(cords) {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: new google.maps.LatLng(cords.lat, cords.lon)
+        });
+    }
+
+    //google map
+    function loadInitMapMarkers() {
+        var locations = $scope.dispalyDetails;
         loadMap(locations[0].cords);
         var i;
 
@@ -166,13 +170,31 @@ app.controller('myCtrl', function ($scope, $http, $window) {
                 number: i,
                 position: new google.maps.LatLng(cords.lat, cords.lon),
                 title: locations[i].name,
-                        address: locations[i].address,
-                        phone: locations[i].phone,
-                map: map,
-                animation: google.maps.Animation.DROP
+                address: locations[i].address,
+                phone: locations[i].phone,
+                map: map
             });
 
             markers.push(addMarker(_marker));
         }
     }
+
+    //click on list of items..
+    $scope.onClick = function (url) {
+        if (url !== 'NA') {
+            $window.open(url, '_blank');
+        }else{
+            alert('Server is not provided Url')
+        }
+    };
+
+    //on mouse over
+    $scope.itemMouseOver = function(){
+        console.log('display on over')
+    };
+
+    //on mouse out
+    $scope.itemMouseOut = function(){
+        console.log('display on out')
+    };
 });

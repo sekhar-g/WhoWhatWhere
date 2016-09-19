@@ -1,80 +1,52 @@
 <!DOCTYPE html>
-<html ng-app="businessApp">
-    <head>
-        <title>Simple Map wel come to whowhatwhere</title>
-        <meta name="viewport" content="initial-scale=1.0">
-        <meta charset="utf-8">
-        <script src="js/lib/angular.min.js"></script>
-        <script src="js/lib/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<html lang="en" ng-app="businessApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>yelp | foursquare </title>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
-        <script src="js/controller.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/bootstrap-combined.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/style.css">
-
-    </head>
-    <body ng-controller="myCtrl">
-        <div style="height: 100%;">
+</head>
+<body ng-controller="mainController" style="background-color: #f7ecb5">
+<div class="container-fluid">
+    <div class="row container-fluid"
+         style="background-image: url('../images/background_header.jpg');background-repeat: no-repeat;
+    background-size: cover;">
+        <div class="pull-left">
+            <img src="images/title.png" style="margin-top: 10px">
+        </div>
+        <div class="pull-right">
             <div class="row">
-                <h1 class="header">Who What Where</h1>
-            </div>
-
-            <div class="row">
-                <h1 class="image-text">Find the best spot to eat, drink, shop, fun or visit any city in the
-                    world.</h1>
-            </div>
-
-            <!--search functionality-->
-            <div class="row search-container">
-                <div>
-                    <div class="col-sm-5 set-input">
-                        <input type="text" placeholder="What?" ng-model="query" autofocus/>
+                <form>
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                        <input class="form-control" type="text" placeholder="Find...." ng-model="findName" required/>
                     </div>
-                    <div class="col-sm-5 set-input">
-                        <input type="text" placeholder="Where?" ng-model="location"/>
+                    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                        <input class="form-control" type="text" placeholder="Location...." ng-model="location"
+                               required/>
                     </div>
-                    <div class="col-sm-2 set-input">
-                        <button class="search-btn btn btn-info" ng-click="onSearchButton()">Search</button>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <button type="submit" class="btn btn-info" ng-click="onSearch()" style="">Search</button>
                     </div>
-                </div>
-            </div>
-
-
-            <div ng-if="!showListAndMap" class="row">
-                <div class="col-xs-3"></div>
-                <div class="col-xs-6">
-                    <div align="center"><img class="image-food" ng-repeat="img in [1,2]" ng-src="./images/{{img}}.jpg"/></div>
-                    <div align="center"><img class="image-food1" ng-repeat="img in [3,4]" ng-src="./images/{{img}}.jpg"/></div>
-                </div>
-                <div class="col-xs-3"></div>
-            </div>
-
-            <!-- display list and map-->
-            <div class="row panel-list-container" ng-show="mapShow">
-                <div class="col-xs-4 panel-container">
-                    <div class="list grid element-{{item.class}}" ng-repeat="item in data track by $index"
-                         id="{{ item.id }}" ng-click="onClick(item.url)">
-
-                        <div class="list-container">
-                            <div class="pull-left"><img class="item-image" ng-src="{{item.image}}"/></div>
-                            <div class="item-list">
-                                <div class="item-name">{{(item.class + 1) + '. ' +item.name}}</div>
-                                <div class="item-address">{{item.address}}</div>
-                                <div class="item-city">{{item.city}}</div>
-                                <div class="item-phone">{{item.phone}}</div>
-                                <div class="item-rating">{{item.rating}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-8 map-container">
-                    <div id="map" style="width: 100%; height: 100%;"></div>
-                </div>
+                </form>
             </div>
         </div>
-    </body>
+
+        <div class="container row pull-right">
+            <div class="col-xs-12 info-title" >
+                <span>Find the best places to eat, drink, shop,any thing or visit in any city in the world.</span>
+            </div>
+        </div>
+    </div>
+    <ng-view></ng-view>
+</div>
+
+<script src="js/lib/angular.min.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/lib/angular-route.min.js"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUmHzfksSu8YbiFt2UzQpL4uoT7UIICPs"></script>
+</body>
 </html>
