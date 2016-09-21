@@ -11,6 +11,13 @@ input, button {
     font-size: 18px;
 }
 
+.title-image{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    height: 150px;
+}
+
 .map-container {
     margin-top: 10px;
     width: auto;
