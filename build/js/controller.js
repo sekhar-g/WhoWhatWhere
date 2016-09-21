@@ -1,6 +1,4 @@
-/**
- * Created by ISMAIL on 9/5/2016.
- */
+
 var app = angular.module('businessApp', ['ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
